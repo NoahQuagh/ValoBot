@@ -19,7 +19,7 @@ module.exports = {
 
         if (!input.includes("#")) {
             return interaction.reply({
-                content: "❌ Veuillez indiquer un format valide : **Pseudo#Tag** (ex: `Arracheur2lavabo#1000`).",
+                content: "Veuillez indiquer un format valide : **Pseudo#Tag** (ex: `Arracheur2lavabo#1000`).",
                 ephemeral: true
             });
         }
@@ -34,7 +34,6 @@ module.exports = {
                 headers["Authorization"] = config.henrikApiKey;
             }
 
-            // Route v4 de l'API HenrikDev pour le MMR
             const response = await fetch(
                 `https://api.henrikdev.xyz/valorant/v3/mmr/eu/pc/${encodeURIComponent(name)}/${encodeURIComponent(tag)}`,
                 { headers }
@@ -64,8 +63,8 @@ module.exports = {
                 .setColor("#FF4655")
                 .addFields(
                     { name: "Rang actuel", value: `${rankName}`, inline: true },
-                    { name: "RR", value: `${rr} / 100`, inline: true },
-                    { name: "Dernier match", value: `${changeSign}${lastChange} RR`, inline: true }
+                        { name: "RR", value: `${rr} / 100`, inline: true },
+                        { name: "Dernier match", value: `${changeSign}${lastChange} RR`, inline: true }
                 )
                 .setThumbnail(currentData.images?.small || currentData.tier.icon || null)
                 .setTimestamp();
